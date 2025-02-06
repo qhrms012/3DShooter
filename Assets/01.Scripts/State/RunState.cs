@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : Istate
+public class RunState : Istate
 {
     private StateMachine stateMachine;
     private Animator animator;
 
-    public IdleState(StateMachine machine, Animator animator)
+    public RunState(StateMachine machine, Animator animator)
     {
         stateMachine = machine;
         this.animator = animator;
@@ -15,14 +15,14 @@ public class IdleState : Istate
 
     public void Enter()
     {
-        animator.Play("Idle");
+        animator.Play("Run");
     }
 
     public void Execute(Vector2 playerVector)
     {
-        if(playerVector.magnitude > 0)
+        if(playerVector.magnitude == 0)
         {
-            stateMachine.SetState(new RunState(stateMachine,animator));
+            stateMachine.SetState(new IdleState(stateMachine,animator));
         }
     }
 

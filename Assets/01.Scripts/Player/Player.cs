@@ -11,11 +11,14 @@ public class Player : MonoBehaviour
     public Vector3 playerVector;
     [SerializeField]
     private float playerSpeed;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         stateMachine = new StateMachine();
+        stateMachine.SetState(new IdleState(stateMachine, animator));
     }
 
     public void OnMove(InputValue value)
@@ -23,7 +26,10 @@ public class Player : MonoBehaviour
         Vector2 inputVector = value.Get<Vector2>();
         playerVector = new Vector3(inputVector.x, 0, inputVector.y);
     }
-
+    private void Update()
+    {
+        stateMachine.Update(playerVector);
+    }
     private void FixedUpdate()
     {
         Vector3 move = playerVector.normalized * playerSpeed * Time.fixedDeltaTime;
