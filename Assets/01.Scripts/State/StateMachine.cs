@@ -15,7 +15,7 @@ public class StateMachine
         currentState.Enter();
     }
 
-    public void Update(Vector2 playerVector)
+    public void Update(Vector3 playerVector)
     {
         if(currentState != null)
             currentState.Execute(playerVector);

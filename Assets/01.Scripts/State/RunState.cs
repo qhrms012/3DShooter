@@ -18,7 +18,7 @@ public class RunState : Istate
         animator.Play("Run");
     }
 
-    public void Execute(Vector2 playerVector)
+    public void Execute(Vector3 playerVector)
     {
         if(playerVector.magnitude == 0)
         {
