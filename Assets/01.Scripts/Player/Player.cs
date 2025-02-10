@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
     private float playerSpeed;
     private Animator animator;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         stateMachine = new StateMachine();
+    }
+    private void Start()
+    {        
         stateMachine.SetState(new IdleState(stateMachine, animator));
     }
 

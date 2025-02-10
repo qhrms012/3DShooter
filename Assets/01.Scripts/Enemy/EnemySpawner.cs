@@ -24,6 +24,5 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject enemy = objectPool.Get(enemyIndex);
         enemy.transform.position = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(5f, 10f));
-
     }
 }
