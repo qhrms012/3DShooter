@@ -29,6 +29,10 @@ public class Player : MonoBehaviour
         Vector2 inputVector = value.Get<Vector2>();
         playerVector = new Vector3(inputVector.x, 0, inputVector.y);
     }
+    public void OnAttack()
+    {
+        Debug.Log("attack");
+    }
     private void Update()
     {
         stateMachine.Update(playerVector);
